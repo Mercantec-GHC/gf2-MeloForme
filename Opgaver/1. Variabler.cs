@@ -35,8 +35,8 @@
             Console.WriteLine("Lav en variabel af typen double og tildel den en værdi komma (decimal) værdi af 5 og en 1/4");
             Console.WriteLine("Udskriv variablen til konsollen.");
             // Lav opgaven herunder!
-            double aira = 5.25;
-            Console.WriteLine(aira);
+            double Amero = 5.25;
+            Console.WriteLine(Amero);
 
         }
 

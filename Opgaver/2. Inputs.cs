@@ -26,6 +26,8 @@ namespace Opgaver
 
             Console.WriteLine("Indtast en streng: ");
             // Lav opgaven herunder!
+            string input = Console.ReadLine();
+            Console.WriteLine("Du indtastede: " + input);
         }
 
         public static void Int1()
