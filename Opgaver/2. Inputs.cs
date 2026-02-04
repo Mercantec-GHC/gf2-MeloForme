@@ -26,8 +26,8 @@ namespace Opgaver
 
             Console.WriteLine("Indtast en streng: ");
             // Lav opgaven herunder!
-            string input = Console.ReadLine();
-            Console.WriteLine("Du indtastede: " + input);
+            string? input = Console.ReadLine();
+            Console.WriteLine(input);
         }
 
         public static void Int1()
@@ -38,6 +38,9 @@ namespace Opgaver
 
             Console.WriteLine("Indtast et tal: ");
             // Lav opgaven herunder!
+            int number = 9;
+            Console.WriteLine(number);
+
         }
 
         public static void Double1()
@@ -48,6 +51,8 @@ namespace Opgaver
 
             Console.WriteLine("Indtast et decimaltal: ");
             // Lav opgaven herunder!
+            double decimalNumber = 9.5;
+            Console.WriteLine(decimalNumber);
         }
 
         public static void Bool1()
@@ -58,6 +63,8 @@ namespace Opgaver
 
             Console.WriteLine("Indtast en sandhedsværdi (sandt/falsk): ");
             // Lav opgaven herunder!
+            bool isTrue = true;
+            Console.WriteLine(isTrue);
         }
 
         // Mini-projekt: Personlig profil (skabelon)
@@ -71,6 +78,17 @@ namespace Opgaver
             );
             Console.WriteLine("Eksempel: Hej, jeg hedder X, er X år gammel og kommer fra X!");
             // Lav opgaven herunder!
+            static void PersonalProfile()
+            {
+                Console.WriteLine("Indtast dit navn: Aira ");
+                string? Aira = Console.ReadLine();
+                Console.WriteLine("Indtast din alder: 30 ");
+                string? ageInput = Console.ReadLine();
+                int age = int.Parse(ageInput!);
+                Console.WriteLine("Indtast din hjemby: Randers ");
+                string? Randers = Console.ReadLine();
+                Console.WriteLine($"Hej, jeg hedder {Aira}, er {30} år gammel og kommer fra {Randers}!");
+            }
         }
 
         // Mini-projekt 2: BMI-beregner (skabelon)
@@ -82,9 +100,16 @@ namespace Opgaver
                 "Lav et program, hvor brugeren indtaster sin vægt (i kg) og højde (i meter)."
             );
             Console.WriteLine("Programmet skal beregne brugerens BMI og udskrive resultatet.");
-            Console.WriteLine(
-                "Tip: BMI beregnes som vægt divideret med højde i anden (BMI = vægt / (højde * højde))."
-            );
+
+            Console.WriteLine("Indtast din vægt i kg: 57 ");
+            string? weightInput = Console.ReadLine();
+            double weight = double.Parse(weightInput!);
+            Console.WriteLine("Indtast din højde i meter: 1.64 ");
+            string? heightInput = Console.ReadLine();
+            double height = double.Parse(heightInput!);
+            double bmi = 57 / (1.64 * 1.64);
+            Console.WriteLine($"Dit BMI er: {bmi:F1}");
         }
     }
 }
+                
