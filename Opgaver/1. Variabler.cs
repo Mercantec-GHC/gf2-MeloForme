@@ -81,16 +81,13 @@
             Console.WriteLine("Strengene er: ");
             string del1 = "Hej";
             string del4 = "med";
-            string del3 = "dig";
-            string del2 = "!";
+            string del3 = "dig!";
             Console.WriteLine($"del1: {del1}");
-            Console.WriteLine($"del2: {del2}");
             Console.WriteLine($"del3: {del3}");
             Console.WriteLine($"del4: {del4}");
             Console.WriteLine("Kombiner dem nu til én sætning:");
             // Løsning med string interpolation
-            string sentence = del1 + del4 + del3 + del2; // "Hejmeddig!"
-            Console.WriteLine($"{del1}{del4}{del3}{del2}");
+            Console.WriteLine($"{del1} {del4} {del3}");
 
         }
 

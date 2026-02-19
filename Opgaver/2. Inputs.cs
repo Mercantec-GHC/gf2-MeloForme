@@ -38,8 +38,6 @@ namespace Opgaver
 
             Console.WriteLine("Indtast et tal: ");
             // Lav opgaven herunder!
-            int number = 9;
-            Console.WriteLine(number);
 
         }
 
@@ -101,13 +99,13 @@ namespace Opgaver
             );
             Console.WriteLine("Programmet skal beregne brugerens BMI og udskrive resultatet.");
 
-            Console.WriteLine("Indtast din vægt i kg: 57 ");
+            Console.WriteLine("Indtast din vægt i kg: ");
             string? weightInput = Console.ReadLine();
             double weight = double.Parse(weightInput!);
-            Console.WriteLine("Indtast din højde i meter: 1.64 ");
+            Console.WriteLine("Indtast din højde i meter: ");
             string? heightInput = Console.ReadLine();
             double height = double.Parse(heightInput!);
-            double bmi = 57 / (1.64 * 1.64);
+            double bmi = weight / (height * height);
             Console.WriteLine($"Dit BMI er: {bmi:F1}");
         }
     }
