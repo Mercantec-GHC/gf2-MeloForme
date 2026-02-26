@@ -27,6 +27,10 @@ namespace Opgaver
             Console.WriteLine("Opgave 1:");
             Console.WriteLine("Brug et loop til at udskrive tallene fra 1 til 10.");
             // Lav opgaven herunder!
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine(i);
+            }
         }
 
         public static void Loop2()
@@ -34,6 +38,13 @@ namespace Opgaver
             Console.WriteLine("Opgave 2:");
             Console.WriteLine("Brug et loop og en if-betingelse til at udskrive alle lige tal fra 2 til 20.");
             // Lav opgaven herunder!
+            for (int i = 1; i < 22; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    Console.WriteLine(i);
+                }
+            }
         }
 
         public static void Loop3()
@@ -41,6 +52,13 @@ namespace Opgaver
             Console.WriteLine("Opgave 3:");
             Console.WriteLine("Brug et loop til at lægge alle tal fra 1 til 100 sammen og udskriv resultatet.");
             // Lav opgaven herunder!
+            int n = 100;
+            int sum = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                sum += i;
+            }
+            Console.WriteLine("Sum (loop) = " + sum);
         }
 
         public static void Loop4()
@@ -48,6 +66,27 @@ namespace Opgaver
             Console.WriteLine("Opgave 4:");
             Console.WriteLine("Bed brugeren om at indtaste sit navn og et tal. Udskriv navnet det antal gange ved hjælp af et loop.");
             // Lav opgaven herunder!
+            Console.Write("Indtast dit navn: ");
+            string? name = Console.ReadLine()?.Trim();
+            while (string.IsNullOrEmpty(name))
+            {
+                Console.Write("Navn må ikke være tomt. Prøv igen: ");
+                name = Console.ReadLine()?.Trim();
+            }
+
+            int count;
+            Console.Write("Hvor mange gange skal navnet udskrives (positivt heltal): ");
+            string? input = Console.ReadLine();
+            while (!int.TryParse(input, out count) || count <= 0)
+            {
+                Console.Write("Ugyldigt input. Indtast et positivt heltal: ");
+                input = Console.ReadLine();
+            }
+
+            for (int i = 1; i <= count; i++)
+            {
+                Console.WriteLine(name);
+            }
         }
 
         public static void Loop5()
@@ -55,6 +94,19 @@ namespace Opgaver
             Console.WriteLine("Opgave 5:");
             Console.WriteLine("Bed brugeren om at indtaste et tal. Brug et loop til at udskrive alle tal fra det indtastede tal og ned til 1.");
             // Lav opgaven herunder!
+            Console.Write("Indtast et heltal (>= 1): ");
+            string? input = Console.ReadLine();
+            int n;
+            while (!int.TryParse(input, out n) || n < 1)
+            {
+                Console.Write("Ugyldigt input. Indtast et heltal større end eller lig med 1: ");
+                input = Console.ReadLine();
+            }
+
+            for (int i = n; i >= 1; i--)
+            {
+                Console.WriteLine(i);
+            }
         }
 
         public static void Loop6()
@@ -63,6 +115,20 @@ namespace Opgaver
             Console.WriteLine(@"Brug et loop til at udskrive alle bogstaverne i dit navn (ét bogstav pr. linje). 
             Navnet skal være gemt i en string variabel.");
             // Lav opgaven herunder!
+            Console.Write("Indtast dit navn: ");
+            string name = Console.ReadLine()?.Trim() ?? "";
+
+            while (string.IsNullOrEmpty(name))
+            {
+                Console.Write("Navn må ikke være tomt. Prøv igen: ");
+                name = Console.ReadLine()?.Trim() ?? "";
+            }
+
+            // Udskriv ét bogstav per linje (inklusive mellemrum)
+            foreach (char c in name)
+            {
+                Console.WriteLine(c);
+            }
         }
 
         public static void Loop7()
@@ -70,6 +136,25 @@ namespace Opgaver
             Console.WriteLine("Opgave 7:");
             Console.WriteLine("Brug et loop til at tælle, hvor mange gange bogstavet 'a' optræder i en tekst, som brugeren indtaster.");
             // Lav opgaven herunder!
+            Console.Write("Indtast en tekst: ");
+            string? text = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(text))
+            {
+                Console.WriteLine("Ingen tekst indtastet. Antal 'a': 0");
+                return;
+            }
+
+            int count = 0;
+            foreach (char c in text)
+            {
+                if (char.ToLowerInvariant(c) == 'a')
+                {
+                    count++;
+                }
+            }
+
+            Console.WriteLine($"Bogstavet 'a' optræder {count} gange.");
         }
 
         public static void Loop8()
@@ -77,6 +162,10 @@ namespace Opgaver
             Console.WriteLine("Opgave 8:");
             Console.WriteLine("Brug et loop til at udskrive alle ulige tal mellem 1 og 50.");
             // Lav opgaven herunder!
+            for (int i = 1; i <= 50; i += 2)
+            {
+                Console.WriteLine(i);
+            }
         }
 
         public static void Loop9()
@@ -84,6 +173,24 @@ namespace Opgaver
             Console.WriteLine("Opgave 9:");
             Console.WriteLine("Bed brugeren om at indtaste 5 tal (ét ad gangen). Brug et loop til at lægge dem sammen og udskriv summen til sidst.");
             // Lav opgaven herunder!
+            double sum = 0;
+
+            for (int i = 1; i <= 5; i++)
+            {
+                Console.Write($"Indtast tal #{i}: ");
+                string? input = Console.ReadLine();
+                double value;
+
+                while (!double.TryParse(input, out value))
+                {
+                    Console.Write("Ugyldigt input. Indtast et gyldigt tal: ");
+                    input = Console.ReadLine();
+                }
+
+                sum += value;
+            }
+
+            Console.WriteLine($"Summen af de 5 tal er: {sum}");
         }
 
         public static void Loop10()
@@ -91,6 +198,40 @@ namespace Opgaver
             Console.WriteLine("Opgave 10:");
             Console.WriteLine("Lav et program, hvor brugeren skal gætte et hemmeligt tal mellem 1 og 10. Brug et loop, så brugeren kan gætte indtil det rigtige tal er fundet.");
             // Lav opgaven herunder!
+            var rnd = new Random();
+            int secret = rnd.Next(1, 11); // 1..10 inclusive
+            int attempts = 0;
+
+            while (true)
+            {
+                Console.Write("Gæt et tal mellem 1 og 10: ");
+                string? input = Console.ReadLine();
+
+                if (!int.TryParse(input, out int guess))
+                {
+                    Console.WriteLine("Ugyldigt input. Indtast et heltal.");
+                    continue;
+                }
+
+                if (guess < 1 || guess > 10)
+                {
+                    Console.WriteLine("Tallet skal være mellem 1 og 10.");
+                    continue;
+                }
+
+                attempts++;
+
+                if (guess == secret)
+                {
+                    Console.WriteLine($"Tillykke — korrekt! Du brugte {attempts} forsøg.");
+                    break;
+                }
+
+                if (guess < secret)
+                    Console.WriteLine("Forkert. Prøv et højere tal.");
+                else
+                    Console.WriteLine("Forkert. Prøv et lavere tal.");
+            }
         }
 
         public static void BankeBøf()
@@ -99,7 +240,19 @@ namespace Opgaver
             Udskriv 'Banke' hvis tallet er deleligt med 3, 'Bøf' hvis tallet er deleligt med 5 
             og 'BankeBøf' hvis tallet er deleligt med både 3 og 5.");
             // Lav opgaven herunder!
+            for (int i = 1; i <= 30; i++)
+            {
+                if (i % 15 == 0)
+                    Console.WriteLine("BankeBøf");
+                else if (i % 3 == 0)
+                    Console.WriteLine("Banke");
+                else if (i % 5 == 0)
+                    Console.WriteLine("Bøf");
+                else
+                    Console.WriteLine(i);
+            }
         }
+
         public static void MiniProjektLommeregner()
         {
             Console.WriteLine("\nMini-projekt: Simpel lommeregner (skabelon)");
@@ -108,6 +261,64 @@ namespace Opgaver
             Console.WriteLine("Programmet skal udregne og udskrive resultatet.");
             Console.WriteLine("Tip: Brug if/else eller switch til at vælge regnearten.");
             // Lav opgaven herunder!
+            double a;
+            Console.Write("Indtast første tal: ");
+            string? input = Console.ReadLine();
+            while (!double.TryParse(input, out a))
+            {
+                Console.Write("Ugyldigt tal. Indtast første tal igen: ");
+                input = Console.ReadLine();
+            }
+
+            // Read second number
+            double b;
+            Console.Write("Indtast andet tal: ");
+            input = Console.ReadLine();
+            while (!double.TryParse(input, out b))
+            {
+                Console.Write("Ugyldigt tal. Indtast andet tal igen: ");
+                input = Console.ReadLine();
+            }
+            // Read operator
+            Console.Write("Vælg regneart (+, -, * eller /): ");
+            string? op = Console.ReadLine()?.Trim();
+            while (string.IsNullOrEmpty(op) || !(op == "+" || op == "-" || op == "*" || op == "/"))
+            {
+                Console.Write("Ugyldig regneart. Indtast en af +, -, * eller /: ");
+                op = Console.ReadLine()?.Trim();
+            }
+            // Calculate and print result
+            double result;
+            switch (op)
+            {
+                case "+":
+                    result = a + b;
+                    Console.WriteLine($"Resultat: {a} + {b} = {result}");
+                    break;
+                case "-":
+                    result = a - b;
+                    Console.WriteLine($"Resultat: {a} - {b} = {result}");
+                    break;
+                case "*":
+                    result = a * b;
+                    Console.WriteLine($"Resultat: {a} * {b} = {result}");
+                    break;
+                case "/":
+                    if (b == 0)
+                    {
+                        Console.WriteLine("Fejl: Division med nul er ikke tilladt.");
+                    }
+                    else
+                    {
+                        result = a / b;
+                        Console.WriteLine($"Resultat: {a} / {b} = {result}");
+                    }
+                    break;
+                default:
+                    // This should never happen due to validation above
+                    Console.WriteLine("Uventet fejl: ukendt regneart.");
+                    break;
+            }
         }
     }
 }
